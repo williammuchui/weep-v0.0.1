@@ -1,1 +1,1 @@
-# password-manager-v0.01
+# weep-v0.0.1
