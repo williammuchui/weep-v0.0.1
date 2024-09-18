@@ -1,3 +1,8 @@
+/* Weep version 0.0.1
+ * William Muchui
+ *williammuchui@gmail.com
+ *Sep 18, 2024
+ * */
 use base64::{engine::general_purpose::STANDARD, Engine as _};
 use ring::aead;
 use rpassword::prompt_password;
