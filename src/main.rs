@@ -2,7 +2,8 @@ use base64::{engine::general_purpose::STANDARD, Engine as _};
 use ring::aead;
 use rpassword::prompt_password;
 use rusqlite::{params, Connection, Result};
-use std::collections::HashMap;
+use std::collections::BTreeMap;
+use std::process;
 
 fn main() -> Result<()> {
     let conn = Connection::open("password_manager.db")?;
@@ -14,10 +15,11 @@ fn main() -> Result<()> {
         return Ok(());
     }
 
-    let mut options = HashMap::new();
+    let mut options = BTreeMap::new();
     options.insert("1", "Add a new password");
     options.insert("2", "Retrieve a password");
     options.insert("3", "List all services");
+    options.insert("4", "Exit");
 
     loop {
         println!("Choose an option:");
@@ -31,6 +33,10 @@ fn main() -> Result<()> {
             "1" => add_password(&conn, &master_key)?,
             "2" => retrieve_password(&conn, &master_key)?,
             "3" => list_services(&conn)?,
+            "4" => {
+                println!("Exiting program...");
+                process::exit(0)
+            }
             _ => {
                 eprintln!("Invalid option.");
             }
