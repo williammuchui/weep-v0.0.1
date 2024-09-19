@@ -1,4 +1,4 @@
-# weep-v0.0.1
+# weep-v0.1.0
 
 A simple and secure command-line password manager written in Rust. It allows users to store, encrypt, and retrieve passwords for different services using an SQLite database.
 
